@@ -1,0 +1,16 @@
+<!-- <p>
+  header works!
+</p> -->
+
+<nav class="navbar navbar-light">
+  <div class="container">
+    <a class="navbar-brand" href="index.html" [ngClass]="{highLight: isHighLight}"
+      [ngStyle]="{'font-size.px': fontSize}">conduit</a>
+    <input class="form-control form-control-sm search-input" type="text" placeholder="Keyword" [(ngModel)]="keyword">
+    <button class="btn btn-sm btn-primary" (click)='doClick($event)'>
+      <i class="ion-search"></i>
+    </button>
+    <span [innerHTML]="keyword"></span>
+    <span *ngIf="keyword === ''">請輸入條件</span>
+  </div>
+</nav>

@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { listenToElementOutputs } from '@angular/core/src/view/element';
-import { ArticlesService } from '../articles.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-articles',
+  templateUrl: './articles.component.html',
+  styleUrls: ['./articles.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'conduit';
-  subtitle = 'A place to share your <u>knowledge</u>.';
-
-  // oriList = [
+export class ArticlesComponent implements OnInit {
+  // list = [
   //   {
   //     title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
   //     slug: 'zp7yqc',
@@ -63,37 +59,12 @@ export class AppComponent implements OnInit {
   //     favorited: false,
   //     favoritesCount: 5
   //   }
-  // ];
-  // list = this.oriList;
+  // ]
+  @Input() list: any[];
 
-  doFilter(e) {
-    console.log(e);
+  constructor() { }
 
-    // if (e) {
-    //   this.list = this.oriList.filter(x => x.title.indexOf(e) !== -1);
-    // } else {
-    //   this.list = this.oriList;
-    // }
-  }
-
-  // get list() {
-  //   return this.service.list;
-  // }
-
-  /**
-   *
-   */
-  constructor(private service: ArticlesService) {
-  }
-
-  list: any[];
   ngOnInit() {
-    this.service.getArticles().subscribe((response: any) => {
-      this.list = response.articles;
-    });
   }
 
-  get keyword() {
-    return this.service.keyword;
-  }
 }
